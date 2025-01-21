@@ -238,11 +238,14 @@
       const tickers = Object.values(data);//.sort((a, b) => parseFloat(b.volume) - parseFloat(a.volume));
       // Getting the top 10 results
       const top10 = tickers.slice(0, 10);
+      var numm = 0;
       // Generating HTML for the top 10 results
-      const top10HTML = top10.map(ticker => `
+      const top10HTML = top10.map(ticker => {
+        numm++;
+        return `
     <tr>
                   <td class="align-middle">
-                    <h4 class="table-text">${ticker.id}</h4>
+                    <h4 class="table-text">${numm}</h4>
                   </td>
                   <td class="align-middle">
                       <h4 class="table-text">
@@ -264,7 +267,7 @@
                     <h4 class="table-text" > ${ticker.base_unit}</h4>
                   </td>
                 </tr>
-    `).join('');
+    ` }).join('');
       // Displaying the top 10 results
       document.getElementById('top10').innerHTML = top10HTML;
     }
